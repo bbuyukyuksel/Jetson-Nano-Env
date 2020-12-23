@@ -1,0 +1,56 @@
+#Jetson Overclock
+$ sudo nvpmodel -m 0
+$ sudo jetson_clocks
+
+#Clean Libreoffice
+$ sudo apt-get purge libreoffice*
+$ sudo apt-get clean
+
+# PIP3
+$ wget https://bootstrap.pypa.io/get-pip.py
+$ sudo python3 get-pip.py
+$ rm get-pip.py
+
+Note:
+ERROR: After October 2020 you may experience errors when installing or updating packages. This is because pip will change the way that it resolves dependency conflicts.
+
+We recommend you use --use-feature=2020-resolver to test your packages with the new resolver before it becomes the default.
+
+# Installation NVIDIA Jetson Tensorflow
+Before you install TensorFlow for Jetson, ensure you:
+
+##Install JetPack on your Jetson device.
+
+##Install system packages required by TensorFlow:
+$ sudo apt-get update
+$ sudo apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev liblapack-dev libblas-dev gfortran
+
+##Install and upgrade pip3.
+$ sudo apt-get install python3-pip
+$ sudo pip3 install -U pip testresources setuptools==49.6.0 
+
+##Install the Python package dependencies.
+$ sudo pip3 install -U numpy==1.16.1 future==0.18.2 mock==3.0.5 h5py==2.10.0 keras_preprocessing==1.1.1 keras_applications==1.0.8 gast==0.2.2 futures protobuf pybind11
+
+sudo pip3 install --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v44 tensorflow==2.2.0+nv20.8
+
+# Protobuf Compiler
+→ Click here to download the code
+How to configure your NVIDIA Jetson Nano for Computer Vision and Deep Learning
+$ wget https://raw.githubusercontent.com/jkjung-avt/jetson_nano/master/install_protobuf-3.6.1.sh
+$ sudo chmod +x install_protobuf-3.6.1.sh
+$ ./install_protobuf-3.6.1.sh
+//$ sudo apt-get install -y protobuf-compiler
+
+
+# Update Alternatives PYTHON
+$ sudo update-alternatives --list python
+
+$ sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+$ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
+
+$ sudo update-alternatives --config python
+
+# Python3: import error tensorflow and cv2
+$ export LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libgomp.so.1
+

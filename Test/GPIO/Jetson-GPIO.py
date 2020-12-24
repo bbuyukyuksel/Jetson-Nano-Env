@@ -5,6 +5,7 @@ sudo pip3 install Jetson.GPIO
 sudo groupadd -f -r gpio
 sudo usermod -a -G gpio YOUR-USER-NAME-HERE
 
+Link: https://github.com/NVIDIA/jetson-gpio
 Ref Doc: Jetson.GPIO.pdf
 '''
 

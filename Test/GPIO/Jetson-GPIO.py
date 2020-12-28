@@ -13,9 +13,10 @@ Ref Doc: Jetson.GPIO.pdf
 
 import RPi.GPIO as GPIO
 import time
-output_pin = 4 # BOARD pin 7, BCM pin 4
+output_pin = 13 # BOARD pin 7, BCM pin 4
 def main():
-    GPIO.setmode(GPIO.BCM)
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setwarnings(False)
     GPIO.setup(output_pin, GPIO.OUT, initial=GPIO.HIGH)
     print("Press CTRL+C to exit")
     curr_value = GPIO.HIGH
